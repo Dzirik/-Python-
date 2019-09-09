@@ -11,6 +11,7 @@ __pycache__/
 #/FinalData/
 #/config.ini
 /.idea/
+/DT - Date and Time/.ipynb_checkpoints/
 
 # Distribution / packaging
 .Python
