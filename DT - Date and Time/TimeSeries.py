@@ -31,6 +31,7 @@ class TimeSeries():
         """
         # TO DO - name columns
         ts = pd.Series(dict(self.ts_list))
+        ts.rename(self.col_names[1], inplace=True)
         ts.sort_index()
 
         return ts

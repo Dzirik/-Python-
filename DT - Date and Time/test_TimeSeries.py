@@ -35,9 +35,9 @@ def test_ts_series_shape():
     assert series.shape == (30,)
 
 
-@pytest.mark.skip("WIP")
 def test_ts_series_name():
-    pass
+    series = __get_ts_series()
+    assert series.name == "VALUE"
 
 
 def test_ts_df_shape():
