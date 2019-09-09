@@ -1,10 +1,8 @@
-import pandas as pd
+"""
+input is not tested
+"""
 
-"""
-tests
-* column types
-* shape
-"""
+import pandas as pd
 
 
 class TimeSeries():
