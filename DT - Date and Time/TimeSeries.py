@@ -19,7 +19,7 @@ class TimeSeries():
         :param ts_list: List. List of tuples (timestamp, value).
         :param col_names: List. Name of time column and name of data column.
         """
-
+        # TODO - add tests of the structure and type + tests
         self.ts_list = ts_list
         self.col_names = col_names
 
