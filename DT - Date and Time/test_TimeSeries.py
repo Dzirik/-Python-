@@ -1,7 +1,5 @@
 import datetime
 
-import pytest
-
 import TimeSeries as TS
 import TimeSeriesGenerator as TSG
 
@@ -50,6 +48,6 @@ def test_ts_df_date_type():
     assert isinstance(df["TIME"][0], datetime.datetime)
 
 
-@pytest.mark.skip("WIP")
 def test_ts_df_names():
-    pass
+    df = __get_ts_df()
+    assert df.columns[0] == "TIME" and df.columns[1] == "VALUE"
