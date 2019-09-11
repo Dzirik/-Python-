@@ -9,6 +9,9 @@ class TimeSeriesGenerator():
     def __init__(self):
         self.seed = 123
 
+    def set_seed_number(self, seed_number):
+        self.seed = seed_number
+
     def __set_seed(self):
         random.seed(self.seed)
         np.random.seed(self.seed)
