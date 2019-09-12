@@ -10,24 +10,19 @@ from DateTimeGenerator import __is_leap
 def dtg():
     return DateTimeGenerator()
 
+def __compare_samples(fun, t_from, t_to, n_sample=200, seed=432):
+    random.seed(seed)
+
+    gen = set([fun(t_from, t_to) for i in range(n_sample)])
+    test = set(range(t_from, t_to + 1))
+
+    return gen == test
 
 def test_year_generator(dtg):
-    random.seed(321)
-    year_from = 2000
-    year_to = 2025
-    years_gen = set([dtg.generate_year(year_from, year_to) for i in range(200)])
-    years_test = set(range(year_from, year_to + 1))
-
-    assert years_gen == years_test
+    assert __compare_samples(dtg.generate_year, 2000, 2025)
 
 def test_month_generator(dtg):
-    random.seed(4325)
-    month_from = 1
-    month_to = 12
-    months_gen = set([dtg.generate_month(month_from, month_to) for i in range(100)])
-    months_test = set(range(month_from, month_to+1))
-
-    assert months_gen == months_test
+    assert __compare_samples(dtg.generate_month, 1, 12)
 
 
 def test_standard_leap_year():
