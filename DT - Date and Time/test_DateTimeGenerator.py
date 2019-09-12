@@ -10,6 +10,7 @@ from DateTimeGenerator import __is_leap
 def dtg():
     return DateTimeGenerator()
 
+
 def __compare_samples(fun, t_from, t_to, n_sample=200, seed=432):
     random.seed(seed)
 
@@ -18,8 +19,10 @@ def __compare_samples(fun, t_from, t_to, n_sample=200, seed=432):
 
     return gen == test
 
+
 def test_year_generator(dtg):
     assert __compare_samples(dtg.generate_year, 2000, 2025)
+
 
 def test_month_generator(dtg):
     assert __compare_samples(dtg.generate_month, 1, 12)

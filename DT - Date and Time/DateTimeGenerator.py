@@ -1,6 +1,7 @@
 import random
 from datetime import datetime
 
+
 class DateTimeGenerator():
 
     def __init__(self):
