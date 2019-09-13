@@ -24,6 +24,10 @@ def test_year_generator(dtg):
     assert __compare_samples(dtg.generate_year, 2000, 2025)
 
 
+def test_month_generator(dtg):
+    assert __compare_samples(dtg.generate_month, 1, 12)
+
+
 @pytest.mark.parametrize("year, month, n_days",
                          [(2020, 1, 31),
                           (2020, 2, 29),
@@ -47,8 +51,29 @@ def test_day_generator(year, month, n_days):
     assert gen == test
 
 
-def test_month_generator(dtg):
-    assert __compare_samples(dtg.generate_month, 1, 12)
+@pytest.mark.parametrize("year_from, year_to, month_from, month_to, n_days",
+                         [(2020, 2020, 1, 1, 31),
+                          (2020, 2020, 2, 2, 29),
+                          (2020, 2020, 3, 3, 31),
+                          (2020, 2020, 4, 4, 30),
+                          (2020, 2020, 5, 5, 31),
+                          (2020, 2020, 6, 6, 30),
+                          (2020, 2020, 7, 7, 31),
+                          (2020, 2020, 8, 8, 31),
+                          (2020, 2020, 9, 9, 30),
+                          (2020, 2020, 10, 10, 31),
+                          (2020, 2020, 11, 11, 30),
+                          (2020, 2020, 12, 12, 31),
+                          (2019, 2019, 2, 2, 28)
+                          ])
+def test_generate_day(year_from, year_to, month_from, month_to, n_days):
+    random.seed(87602)
+    dsg = DateTimeGenerator()
+    gen = set([dsg.generate_date(year_from, year_to, month_from, month_to) for i in range(150)])
+    (y, m, d) = zip(*gen)
+    assert set(y) == {year_from}
+    assert set(m) == {month_from}
+    assert set(d) == set(range(1, n_days + 1))
 
 
 def test_standard_leap_year():
