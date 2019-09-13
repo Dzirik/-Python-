@@ -12,6 +12,7 @@ __pycache__/
 #/config.ini
 /.idea/
 /DT - Date and Time/.ipynb_checkpoints/
+/DT - Date and Time/cov_html
 
 # Distribution / packaging
 .Python
