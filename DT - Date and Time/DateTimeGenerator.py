@@ -44,3 +44,19 @@ class DateTimeGenerator():
         day = self.generate_day(year, month)
 
         return (year, month, day)
+
+    @staticmethod
+    def convert_triplet(triplet):
+        y = str(triplet[0])
+
+        if triplet[1] < 10:
+            m = "0" + str(triplet[1])
+        else:
+            m = str(triplet[1])
+
+        if triplet[2] < 10:
+            d = "0" + str(triplet[2])
+        else:
+            d = str(triplet[2])
+
+        return int(y + m + d)
