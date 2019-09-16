@@ -75,14 +75,14 @@ def test_generate_day(year_from, year_to, month_from, month_to, n_days):
     assert set(m) == {month_from}
     assert set(d) == set(range(1, n_days + 1))
 
-@pytest.mark.parametrize("triplet, result",
-                        [
-                            ((2019, 2, 29), 20190229),
-                            ((2019, 12, 1), 20191201),
-                            ((2019, 12, 12), 20191212),
-                            ((2019, 3, 5), 20190305)
-                        ])
 
+@pytest.mark.parametrize("triplet, result",
+                         [
+                             ((2019, 2, 29), 20190229),
+                             ((2019, 12, 1), 20191201),
+                             ((2019, 12, 12), 20191212),
+                             ((2019, 3, 5), 20190305)
+                         ])
 def test_convert_triplet(triplet, result):
     dsg = DateTimeGenerator()
     assert dsg.convert_triplet(triplet) == result

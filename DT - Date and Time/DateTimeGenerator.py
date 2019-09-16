@@ -1,3 +1,7 @@
+"""
+TODO - add documentation
+"""
+
 import random
 from datetime import datetime, timedelta
 
@@ -7,6 +11,7 @@ def is_leap(year):
         return True
     else:
         return False
+
 
 def get_random_datetime(min_year=1900, max_year=datetime.now().year):
     # generate a datetime in format yyyy-mm-dd hh:mm:ss.000000
