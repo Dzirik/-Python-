@@ -19,6 +19,8 @@ class DWMYTransformator(BaseTransformator):
             return ((X.year + X.week / 100) * 100).astype(int)
         elif type == "m":
             return ((X.year + X.month / 100) * 100).astype(int)
+        elif type == "y":
+            return (X.year).astype(int)
 
     def fit(self, X, type):
         """

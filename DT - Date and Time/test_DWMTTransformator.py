@@ -2,8 +2,10 @@ import numpy as np
 import pytest
 
 import DWMYTransformator as T
+import DateTimeGenerator as DTG
 import TimeSeries as TS
 import TimeSeriesGenerator as TSG
+from DateTimeGenerator import get_random_datetime
 
 ground_truth_day = np.array([20190801, 20190805, 20190809, 20190811, 20190813, 20190822, 20190824, 20190825,
                              20190826, 20190827, 20190827, 20190828, 20190829, 20190829, 20190901, 20190901, 20190903,
@@ -17,6 +19,10 @@ ground_truth_week = np.array([201801, 201801, 201801, 201803, 201805, 201806, 20
                               201847, 201848, 201849, 201850, 201901, 201901, 201902, 201903, 201903,
                               201907, 201908, 201908, 201909, 201909, 201944, 201944, 201947, 201948,
                               201948, 201949, 201950])
+ground_truth_year = np.array([2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018,
+                               2018, 2018, 2018, 2018, 2019, 2019, 2019, 2019, 2019, 2019,
+                               2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019, 2019,
+                               2019, 2019])
 
 
 def __get_ts_array(time_type):
@@ -58,10 +64,22 @@ def __transform_ts_array(ts_array, transformation_type, time_type):
                              ("p", "w", ground_truth_week),
                              ("f", "m", ground_truth_month),
                              ("fp", "m", ground_truth_month),
-                             ("p", "m", ground_truth_month)
+                             ("p", "m", ground_truth_month),
+                             ("f", "y", ground_truth_year),
+                             ("fp", "y", ground_truth_year),
+                             ("p", "y", ground_truth_year)
                          ])
-def test_fit_day_conversion(transformation_type, time_type, ground_truth):
+def test_conversion(transformation_type, time_type, ground_truth):
     time_array = __get_ts_array(time_type)
     transform_data = __transform_ts_array(time_array, transformation_type, time_type)
 
     assert np.array_equal(transform_data, ground_truth)
+
+
+"""
+@pytest.mark.parametrize("transformation_type, time_type, time_array, ground_truth",
+                         [("f", "y", np.array(get_random_datetime(2000, 2000)), np.array([2000]))])
+def test_year_conversion(transformation_type, time_type, time_array, ground_truth):
+    time_array = __transform_ts_array(time_array, transformation_type, time_type)
+    assert time_array == ground_truth
+"""
