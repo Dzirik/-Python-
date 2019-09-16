@@ -1,8 +1,14 @@
 import numpy as np
+import pytest
 
 import DWMYTransformator as T
 import TimeSeries as TS
 import TimeSeriesGenerator as TSG
+
+ground_truth_day = np.array([20190801, 20190805, 20190809, 20190811, 20190813, 20190822, 20190824, 20190825,
+                             20190826, 20190827, 20190827, 20190828, 20190829, 20190829, 20190901, 20190901, 20190903,
+                             20190909, 20190909, 20190911, 20190912, 20190913, 20190917, 20190917, 20190922, 20190922,
+                             20190923, 20190924, 20190929, 20190930])
 
 
 def __get_ts_array(time_type):
@@ -26,16 +32,22 @@ def __transform_ts_array(ts_array, transformation_type, time_type):
 
     if transformation_type == "f":
         transformed_data = t.fit(ts_array, time_type)
+    elif transformation_type == "fp":
+        transformed_data = t.fitpredict(ts_array, time_type)
+    elif transformation_type == "p":
+        transformed_data = t.predict(ts_array, time_type)
 
     return transformed_data
 
 
-def test_fit_day_conversion():
-    time_array = __get_ts_array("d")
-    transform_data = __transform_ts_array(time_array, "f", "d")
-    ground_truth = np.array([20190801, 20190805, 20190809, 20190811, 20190813, 20190822, 20190824, 20190825,
-                             20190826, 20190827, 20190827, 20190828, 20190829, 20190829, 20190901, 20190901, 20190903,
-                             20190909, 20190909, 20190911, 20190912, 20190913, 20190917, 20190917, 20190922, 20190922,
-                             20190923, 20190924, 20190929, 20190930])
+@pytest.mark.parametrize("transformation_type, time_type, ground_truth",
+                         [
+                             ("f", "d", ground_truth_day),
+                             ("fp", "d", ground_truth_day),
+                             ("p", "d", ground_truth_day)
+                         ])
+def test_fit_day_conversion(transformation_type, time_type, ground_truth):
+    time_array = __get_ts_array(time_type)
+    transform_data = __transform_ts_array(time_array, transformation_type, time_type)
 
     assert np.array_equal(transform_data, ground_truth)
