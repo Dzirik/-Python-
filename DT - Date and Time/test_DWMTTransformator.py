@@ -13,6 +13,10 @@ ground_truth_month = np.array([201801, 201803, 201803, 201805, 201806, 201809, 2
                                201811, 201811, 201812, 201812, 201901, 201901, 201901, 201901, 201904, 201904,
                                201905, 201906, 201906, 201907, 201908, 201909, 201909, 201909, 201909,
                                201911, 201911])
+ground_truth_week = np.array([201801, 201801, 201801, 201803, 201805, 201806, 201807, 201845, 201845,
+                              201847, 201848, 201849, 201850, 201901, 201901, 201902, 201903, 201903,
+                              201907, 201908, 201908, 201909, 201909, 201944, 201944, 201947, 201948,
+                              201948, 201949, 201950])
 
 
 def __get_ts_array(time_type):
@@ -49,6 +53,9 @@ def __transform_ts_array(ts_array, transformation_type, time_type):
                              ("f", "d", ground_truth_day),
                              ("fp", "d", ground_truth_day),
                              ("p", "d", ground_truth_day),
+                             ("f", "w", ground_truth_week),
+                             ("fp", "w", ground_truth_week),
+                             ("p", "w", ground_truth_week),
                              ("f", "m", ground_truth_month),
                              ("fp", "m", ground_truth_month),
                              ("p", "m", ground_truth_month)

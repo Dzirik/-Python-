@@ -15,6 +15,8 @@ class DWMYTransformator(BaseTransformator):
         """
         if type == "d":
             return ((X.year + X.month / 100 + X.day / 10000) * 10000).astype(int)
+        elif type == "w":
+            return ((X.year + X.week / 100) * 100).astype(int)
         elif type == "m":
             return ((X.year + X.month / 100) * 100).astype(int)
 
