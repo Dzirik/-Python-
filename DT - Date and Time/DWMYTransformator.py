@@ -6,32 +6,32 @@ class DWMYTransformator(BaseTransformator):
     def __init__(self):
         BaseTransformator.__init__(self, name="DWMY", data_type="array")
 
-    def __transform(self, X, type):
+    def __transform(self, X, time_type):
         """
 
         :param X:
-        :param type:
+        :param time_type:
         :return:
         """
-        if type == "d":
+        if time_type == "d":
             return ((X.year + X.month / 100 + X.day / 10000) * 10000).astype(int)
-        elif type == "w":
+        elif time_type == "w":
             return ((X.year + X.week / 100) * 100).astype(int)
-        elif type == "m":
+        elif time_type == "m":
             return ((X.year + X.month / 100) * 100).astype(int)
-        elif type == "y":
+        elif time_type == "y":
             return (X.year).astype(int)
 
-    def fit(self, X, type):
+    def fit(self, X, time_type):
         """
         :param X:
-        :param type:
+        :param time_type:
         :return:
         """
-        return self.__transform(X, type)
+        return self.__transform(X, time_type)
 
-    def fitpredict(self, X, type):
-        return self.__transform(X, type)
+    def fitpredict(self, X, time_type):
+        return self.__transform(X, time_type)
 
-    def predict(self, X, type):
-        return self.__transform(X, type)
+    def predict(self, X, time_type):
+        return self.__transform(X, time_type)
