@@ -4,7 +4,7 @@ from BaseTransformator import BaseTransformator
 class DWMYTransformator(BaseTransformator):
 
     def __init__(self):
-        super(BaseTransformator, self).__init__("DWMY", "array")
+        BaseTransformator.__init__(self, name="DWMY", data_type="array")
 
     def __transform(self, X, type):
         """
