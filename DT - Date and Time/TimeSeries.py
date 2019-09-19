@@ -39,9 +39,9 @@ class TimeSeries():
 
         :returns: pandas.DataFrame.
         """
-        # TO DO - name columns
         df = pd.DataFrame(self.ts_list)
         df.columns = self.col_names
         df.sort_values(by=self.col_names[0], inplace=True)
+        df.reset_index(drop=True, inplace=True)
 
         return df
