@@ -2,6 +2,7 @@ import datetime
 import random
 
 import numpy as np
+import pandas as pd
 
 
 class TimeSeriesGenerator():
@@ -15,6 +16,21 @@ class TimeSeriesGenerator():
     def __set_seed(self):
         random.seed(self.seed)
         np.random.seed(self.seed)
+
+    def generate_sample_ts_df(self, ts_lengths=[20, 30, 40, 50], int_data=True):
+        df = pd.DataFrame()
+        id_list = []
+        data_list = []
+        i = 0
+        for n in ts_lengths:
+            id_list.append(i)
+            i = i + 1
+            data_list.append(self.generate_day_data(int_data=int_data, n=n))
+
+        df["ID"] = id_list
+        df["DATA"] = data_list
+
+        return df
 
     def generate_day_data(self, int_data=True, n=30):
         self.__set_seed()
