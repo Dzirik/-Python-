@@ -17,7 +17,7 @@ class TimeSeriesGenerator():
         random.seed(self.seed)
         np.random.seed(self.seed)
 
-    def generate_sample_ts_df(self, ts_lengths=[20, 30, 40, 50], int_data=True):
+    def generate_sample_ts_df(self, ts_lengths=[20, 30, 40, 50], int_data=False):
         df = pd.DataFrame()
         id_list = []
         data_list = []
