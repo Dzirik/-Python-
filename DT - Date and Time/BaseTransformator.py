@@ -15,6 +15,7 @@ class BaseTransformator(ABC):
     def predict(self):
         pass
 
+    # TODO - change to fit_predict everywhere
     @abstractmethod
     def fitpredict(self):
         pass
