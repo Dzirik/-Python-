@@ -10,16 +10,16 @@ class TimeSeries():
         self.ts_list = None
         self.col_names = None
 
-    def set_ts_list(self, ts_list, col_names):
+    def set_ts_list(self, ts_list, atr_names):
         """
         Set the time series.
 
         :param ts_list: List. List of tuples (timestamp, value).
-        :param col_names: List. Name of time column and name of data column.
+        :param atr_names: List. Name of time column and name of data column.
         """
         # TODO - add tests of the structure and type + tests
         self.ts_list = ts_list
-        self.col_names = col_names
+        self.col_names = atr_names
 
     def get_ts_series(self):
         """
