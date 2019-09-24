@@ -6,7 +6,7 @@ class DWMYTransformator(BaseTransformator):
     def __init__(self):
         BaseTransformator.__init__(self, name="DWMY", data_type="array")
 
-    def __transform(self, X, time_type):
+    def _transform(self, X, time_type):
         """
 
         :param X:
@@ -28,10 +28,10 @@ class DWMYTransformator(BaseTransformator):
         :param time_type:
         :return:
         """
-        return self.__transform(X, time_type)
+        return self._transform(X, time_type)
 
     def fit_predict(self, X, time_type):
-        return self.__transform(X, time_type)
+        return self._transform(X, time_type)
 
     def predict(self, X, time_type):
-        return self.__transform(X, time_type)
+        return self._transform(X, time_type)
