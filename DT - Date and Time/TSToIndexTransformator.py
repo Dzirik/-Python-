@@ -45,7 +45,7 @@ class TSToIndexTransformator(BaseTransformator):
     def fit(self, X, fun_type="entropy"):
         return self.__transform(X, fun_type)
 
-    def fitpredict(self, X, fun_type="entropy"):
+    def fit_predict(self, X, fun_type="entropy"):
         return self.__transform(X, fun_type)
 
     def predict(self, X, fun_type="entropy"):

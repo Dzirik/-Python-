@@ -32,13 +32,13 @@ class PipelineTSToIndex():
         self.ts.set_ts_list(X, atr_names)
         df = self.ts.get_ts_df()
 
-        df = self.dwmy_df_t.fitpredict(df, time_type, atr_names)
-        df = self.dwmy_group_t.fitpredict(df, time_type, atr_names, group_fun)
+        df = self.dwmy_df_t.fit_predict(df, time_type, atr_names)
+        df = self.dwmy_group_t.fit_predict(df, time_type, atr_names, group_fun)
 
         return df
 
     def _compute_index(self, X, atr_names, fun_type):
-        return self.ts_to_index_t.fitpredict(X[atr_names[1]].array, fun_type)
+        return self.ts_to_index_t.fit_predict(X[atr_names[1]].array, fun_type)
 
     def _create_index_for_ts_list(self, X, time_type, atr_names, group_fun, fun_type="entropy"):
         df = self._group_ts_from_list(X, time_type, atr_names, group_fun)

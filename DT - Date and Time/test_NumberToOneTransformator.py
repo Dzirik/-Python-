@@ -23,7 +23,7 @@ def _transform_df(df, transformation_type):
     if transformation_type == "f":
         transformed_data = t.fit(df, ["ID", "VALUE"])
     elif transformation_type == "fp":
-        transformed_data = t.fitpredict(df, ["ID", "VALUE"])
+        transformed_data = t.fit_predict(df, ["ID", "VALUE"])
     elif transformation_type == "p":
         transformed_data = t.predict(df, ["ID", "VALUE"])
 

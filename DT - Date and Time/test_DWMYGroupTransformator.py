@@ -55,7 +55,7 @@ def __transform_ts_df(ts_df, transformation_type, time_type):
     if transformation_type == "f":
         transformed_data = t.fit(ts_df, time_type, ["TIME", "VALUE"], sum)
     elif transformation_type == "fp":
-        transformed_data = t.fitpredict(ts_df, time_type, ["TIME", "VALUE"], sum)
+        transformed_data = t.fit_predict(ts_df, time_type, ["TIME", "VALUE"], sum)
     elif transformation_type == "p":
         transformed_data = t.predict(ts_df, time_type, ["TIME", "VALUE"], sum)
 

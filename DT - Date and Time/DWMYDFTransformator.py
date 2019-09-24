@@ -29,7 +29,7 @@ class DWMYDFTransformator(DWMYTransformator):
         """
         return self.__transform(X, time_type, atr_names)
 
-    def fitpredict(self, X, time_type, atr_names):
+    def fit_predict(self, X, time_type, atr_names):
         return self.__transform(X, time_type, atr_names)
 
     def predict(self, X, time_type, atr_names):

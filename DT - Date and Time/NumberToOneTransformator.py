@@ -25,7 +25,7 @@ class NumberToOneTransformator(BaseTransformator):
         """
         return self.__transform(X, atr_names)
 
-    def fitpredict(self, X, atr_names):
+    def fit_predict(self, X, atr_names):
         return self.__transform(X, atr_names)
 
     def predict(self, X, atr_names):

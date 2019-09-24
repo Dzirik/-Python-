@@ -45,7 +45,7 @@ def __transform_ts_array(ts_array, transformation_type, time_type):
     if transformation_type == "f":
         transformed_data = t.fit(ts_array, time_type)
     elif transformation_type == "fp":
-        transformed_data = t.fitpredict(ts_array, time_type)
+        transformed_data = t.fit_predict(ts_array, time_type)
     elif transformation_type == "p":
         transformed_data = t.predict(ts_array, time_type)
 

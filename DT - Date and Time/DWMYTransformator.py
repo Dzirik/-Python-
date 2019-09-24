@@ -30,7 +30,7 @@ class DWMYTransformator(BaseTransformator):
         """
         return self.__transform(X, time_type)
 
-    def fitpredict(self, X, time_type):
+    def fit_predict(self, X, time_type):
         return self.__transform(X, time_type)
 
     def predict(self, X, time_type):
