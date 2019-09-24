@@ -24,6 +24,7 @@ class PipelineTSToIndex():
         df_idx = df_idx.to_frame()
         df_idx.rename(columns={atr_names_df[1]: (atr_names_df[1][3:] + "_" + fun_type.upper())}, inplace=True)
         df_idx[atr_names_df[0]] = df[atr_names_df[0]]
+        df_idx = df_idx.reindex(columns=[df_idx.columns[1], df_idx.columns[0]])
 
         return df_idx
 
