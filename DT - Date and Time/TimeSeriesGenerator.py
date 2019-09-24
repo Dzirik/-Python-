@@ -21,10 +21,10 @@ class TimeSeriesGenerator():
         df = pd.DataFrame()
         id_list = []
         data_list = []
-        i = 0
+        i = 10
         for n in ts_lengths:
             id_list.append(i)
-            i = i + 1
+            i = i + 10
             data_list.append(self.generate_day_data(int_data=int_data, n=n))
 
         df["ID"] = id_list
