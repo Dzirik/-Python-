@@ -24,7 +24,7 @@ ground_truth_year = np.array([2018, 2018, 2018, 2018, 2018, 2018, 2018, 2018, 20
                               2019, 2019])
 
 
-def __get_ts_df(time_type):
+def _get_ts_df(time_type):
     tsg = TSG.TimeSeriesGenerator()
     ts = TS.TimeSeries()
 
@@ -41,7 +41,7 @@ def __get_ts_df(time_type):
     return ts_df
 
 
-def __transform_ts_df(ts_df, transformation_type, time_type):
+def _transform_ts_df(ts_df, transformation_type, time_type):
     t = T.DWMYDFTransformator()
 
     if transformation_type == "f":
@@ -74,7 +74,7 @@ def test_conversion(transformation_type, time_type, ground_truth):
     df_ground_truth["VALUE"] = [1] * len(ground_truth)
     df_ground_truth["TIME" + "_" + time_type] = ground_truth
 
-    ts_df = __get_ts_df(time_type)
-    transform_data = __transform_ts_df(ts_df, transformation_type, time_type)
+    ts_df = _get_ts_df(time_type)
+    transform_data = _transform_ts_df(ts_df, transformation_type, time_type)
 
     assert transform_data.equals(df_ground_truth)

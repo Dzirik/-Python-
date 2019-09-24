@@ -6,7 +6,7 @@ class NumberToOneTransformator(BaseTransformator):
     def __init__(self):
         BaseTransformator.__init__(self, name="NumberToOne", data_type="df")
 
-    def __transform(self, X, atr_names):
+    def _transform(self, X, atr_names):
         """
 
         :param X:
@@ -23,10 +23,10 @@ class NumberToOneTransformator(BaseTransformator):
         :param time_type:
         :return:
         """
-        return self.__transform(X, atr_names)
+        return self._transform(X, atr_names)
 
     def fit_predict(self, X, atr_names):
-        return self.__transform(X, atr_names)
+        return self._transform(X, atr_names)
 
     def predict(self, X, atr_names):
-        return self.__transform(X, atr_names)
+        return self._transform(X, atr_names)

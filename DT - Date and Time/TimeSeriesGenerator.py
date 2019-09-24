@@ -13,7 +13,7 @@ class TimeSeriesGenerator():
     def set_seed_number(self, seed_number):
         self.seed = seed_number
 
-    def __set_seed(self):
+    def _set_seed(self):
         random.seed(self.seed)
         np.random.seed(self.seed)
 
@@ -33,7 +33,7 @@ class TimeSeriesGenerator():
         return df
 
     def generate_day_data(self, int_data=True, n=30):
-        self.__set_seed()
+        self._set_seed()
         if int_data:
             upper = 100
         else:
@@ -47,7 +47,7 @@ class TimeSeriesGenerator():
         return data
 
     def generate_week_data(self, int_data=True, n=30):
-        self.__set_seed()
+        self._set_seed()
         if int_data:
             upper = 100
         else:
@@ -61,7 +61,7 @@ class TimeSeriesGenerator():
         return data
 
     def generate_month_data(self, int_data=True, n=30):
-        self.__set_seed()
+        self._set_seed()
         if int_data:
             upper = 100
         else:

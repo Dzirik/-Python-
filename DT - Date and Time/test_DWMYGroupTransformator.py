@@ -4,7 +4,7 @@ import pytest
 import DWMYGroupTransformator as T
 
 
-def __get_ground_truth_day():
+def _get_ground_truth_day():
     ground_truth = pd.DataFrame()
     ground_truth["TIME_d"] = [20190101, 20190102, 20190103]
     ground_truth["VALUE"] = [1, 2, 3]
@@ -12,14 +12,14 @@ def __get_ground_truth_day():
     return ground_truth
 
 
-def __get_ground_truth_week():
+def _get_ground_truth_week():
     ground_truth = pd.DataFrame()
     ground_truth["TIME_w"] = [201901, 201902, 201903]
     ground_truth["VALUE"] = [1, 2, 3]
 
     return ground_truth
 
-def __get_ground_truth_month():
+def _get_ground_truth_month():
     ground_truth = pd.DataFrame()
     ground_truth["TIME_m"] = [201901, 201902, 201903]
     ground_truth["VALUE"] = [1, 2, 3]
@@ -27,7 +27,7 @@ def __get_ground_truth_month():
     return ground_truth
 
 
-def __get_ground_truth_year():
+def _get_ground_truth_year():
     ground_truth = pd.DataFrame()
     ground_truth["TIME_y"] = [2019, 2020, 2021]
     ground_truth["VALUE"] = [1, 2, 3]
@@ -35,7 +35,7 @@ def __get_ground_truth_year():
     return ground_truth
 
 
-def __get_ts_df(time_type):
+def _get_ts_df(time_type):
     ts_df = pd.DataFrame()
     if time_type == "d":
         ts_df["TIME" + "_" + time_type] = [20190101, 20190102, 20190102, 20190103, 20190103, 20190103]
@@ -49,7 +49,7 @@ def __get_ts_df(time_type):
     return ts_df
 
 
-def __transform_ts_df(ts_df, transformation_type, time_type):
+def _transform_ts_df(ts_df, transformation_type, time_type):
     t = T.DWMYGroupTransformator()
 
     if transformation_type == "f":
@@ -64,21 +64,21 @@ def __transform_ts_df(ts_df, transformation_type, time_type):
 
 @pytest.mark.parametrize("transformation_type, time_type, ground_truth",
                          [
-                             ("f", "d", __get_ground_truth_day()),
-                             ("fp", "d", __get_ground_truth_day()),
-                             ("p", "d", __get_ground_truth_day()),
-                             ("f", "w", __get_ground_truth_week()),
-                             ("fp", "w", __get_ground_truth_week()),
-                             ("p", "w", __get_ground_truth_week()),
-                             ("f", "m", __get_ground_truth_month()),
-                             ("fp", "m", __get_ground_truth_month()),
-                             ("p", "m", __get_ground_truth_month()),
-                             ("f", "y", __get_ground_truth_year()),
-                             ("fp", "y", __get_ground_truth_year()),
-                             ("p", "y", __get_ground_truth_year())
+                             ("f", "d", _get_ground_truth_day()),
+                             ("fp", "d", _get_ground_truth_day()),
+                             ("p", "d", _get_ground_truth_day()),
+                             ("f", "w", _get_ground_truth_week()),
+                             ("fp", "w", _get_ground_truth_week()),
+                             ("p", "w", _get_ground_truth_week()),
+                             ("f", "m", _get_ground_truth_month()),
+                             ("fp", "m", _get_ground_truth_month()),
+                             ("p", "m", _get_ground_truth_month()),
+                             ("f", "y", _get_ground_truth_year()),
+                             ("fp", "y", _get_ground_truth_year()),
+                             ("p", "y", _get_ground_truth_year())
                          ])
 def test_conversion(transformation_type, time_type, ground_truth):
-    ts_df = __get_ts_df(time_type)
-    transformed_data = __transform_ts_df(ts_df, transformation_type, time_type)
+    ts_df = _get_ts_df(time_type)
+    transformed_data = _transform_ts_df(ts_df, transformation_type, time_type)
 
     assert transformed_data.equals(ground_truth)

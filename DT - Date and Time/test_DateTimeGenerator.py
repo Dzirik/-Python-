@@ -11,7 +11,7 @@ def dtg():
     return DateTimeGenerator()
 
 
-def __compare_samples(fun, t_from, t_to, n_sample=200, seed=432):
+def _compare_samples(fun, t_from, t_to, n_sample=200, seed=432):
     random.seed(seed)
 
     gen = set([fun(t_from, t_to) for i in range(n_sample)])
@@ -21,11 +21,11 @@ def __compare_samples(fun, t_from, t_to, n_sample=200, seed=432):
 
 
 def test_year_generator(dtg):
-    assert __compare_samples(dtg.generate_year, 2000, 2025)
+    assert _compare_samples(dtg.generate_year, 2000, 2025)
 
 
 def test_month_generator(dtg):
-    assert __compare_samples(dtg.generate_month, 1, 12)
+    assert _compare_samples(dtg.generate_month, 1, 12)
 
 
 @pytest.mark.parametrize("year, month, n_days",
