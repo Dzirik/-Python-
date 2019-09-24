@@ -28,7 +28,7 @@ class TimeSeriesGenerator():
             data_list.append(self.generate_day_data(int_data=int_data, n=n))
 
         df["ID"] = id_list
-        df["DATA"] = data_list
+        df["TS_DATA"] = data_list
 
         return df
 
